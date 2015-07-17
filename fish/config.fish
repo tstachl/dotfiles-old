@@ -1,3 +1,6 @@
+# Path to your dotfiles.
+set dot_path $HOME/.dotfiles
+
 # Path to your oh-my-fish.
 set fish_path $HOME/.dotfiles/oh-my-fish
 
@@ -10,4 +13,12 @@ set fish_custom $HOME/.dotfiles/fish
 # Custom plugins and themes may be added to ~/.oh-my-fish/custom
 # Plugins and themes can be found at https://github.com/oh-my-fish/
 Theme 'thomasstachl'
-# Plugin 'theme'
+Plugin 'dotfiles'
+
+# Make sure we're up to date
+omf self-update
+dotfiles self-update
+
+# Add all the dotfiles
+dotfiles link git/config .gitconfig
+dotfiles link vim/vimrc .vimrc
