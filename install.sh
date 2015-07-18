@@ -11,7 +11,7 @@
 #   - Fish 2.0+ [fishshell.com] [github.com/fish-shell/fish-shell]
 
 dot_path=~/.dotfiles
-fish_path=~/.dotfiles/.oh-my-fish
+fish_path=~/.dotfiles/oh-my-fish
 config_path=~/.config/fish
 
 black='\033[0;30m' # Black - Regular
