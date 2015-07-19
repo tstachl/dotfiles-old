@@ -6,7 +6,7 @@ else
 end
 
 # Path to dotvim
-set dotvim_path       $dot_path/dotvim
+set dotvim_path       ~/.vim
 
 # Path to your oh-my-fish.
 set fish_path         $dot_path/oh-my-fish

@@ -12,7 +12,7 @@
 
 dot_path=~/.dotfiles
 fish_path=~/.dotfiles/oh-my-fish
-dotvim_path=~/.dotfiles/dotvim
+dotvim_path=~/.vim
 config_path=~/.config/fish
 
 black='\033[0;30m' # Black - Regular
