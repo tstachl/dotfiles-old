@@ -1,5 +1,5 @@
 # Path to your dotfiles.
-set dot_path          (dirname (dirname (status --current-filename)))
+set dot_path          (dirname (dirname (readlink (status --current-filename))))
 
 # Path to your oh-my-fish.
 set fish_path         $dot_path/oh-my-fish
