@@ -23,6 +23,8 @@ if has("user_commands")
   " Add extra bundles here...
   " Bundle 'reponame'
   Bundle 'altercation/vim-colors-solarized'
+  Bundle 'sickill/vim-monokai'
 endif
 
 " Customize to your needs...
+colorscheme monokai
