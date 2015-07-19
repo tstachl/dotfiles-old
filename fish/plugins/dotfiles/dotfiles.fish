@@ -11,9 +11,7 @@ function dotfiles -d "Dotfiles helper"
       case 'link'
         dotfiles.file --link $argv[2..-1]
       case 'unlink'
-        dotfiles.file --unlink
-      case 'backup'
-        dotfiles.file --backup
+        dotfiles.file --unlink $argv[2..-1]
       case 'self-update'
         omf.git --update $dot_path
 
