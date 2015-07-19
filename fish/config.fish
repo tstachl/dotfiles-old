@@ -23,5 +23,8 @@ omf self-update
 dotfiles self-update
 
 # Add all the dotfiles
-dotfiles link git/config .gitconfig
-dotfiles link vim/vimrc .vimrc
+dotfiles link git/gitattributes
+dotfiles link git/gitconfig
+dotfiles link git/gitignore
+dotfiles link git/gitk
+dotfiles link git/tigrc
