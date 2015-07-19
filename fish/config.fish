@@ -5,6 +5,10 @@ else
   set -x dot_path    (dirname (dirname (status --current-filename)))
 end
 
+# Set color profile
+set -x LC_TERM_PROFILE base16-monokai.dark
+eval sh $HOME/.config/base16-shell/$LC_TERM_PROFILE.sh
+
 # Path to dotvim
 set dotvim_path       ~/.vim
 
