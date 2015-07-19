@@ -39,5 +39,6 @@ Temporary Items
 
 ### PERSONAL ###
 .ignored
-oh-my-fish
-backup
+/oh-my-fish
+/backup
+/dotvim
