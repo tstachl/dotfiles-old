@@ -8,7 +8,7 @@
 "
 
 " Call dotvim
-source $DOT_PATH/dotvim/dotvim.vim
+source $dot_path/dotvim/dotvim.vim
 
 if has("user_commands")
   set nocompatible
