@@ -35,8 +35,12 @@ function dotfiles.file.link --argument-names file_path -d 'Link a dotfile'
     set -l file_name      (basename $file_path)
     set -l dotfile_name   .$file_name
 
+    if readlink $HOME/$dotfile_name | grep $dot_path >/dev/null
+      return
+    end
+
     if test -e $HOME/$dotfile_name
-      dotfiles.file.backup $dotfile_name
+      mv $HOME/$dotfile_name $__dotfiles_backup_path/$dotfile_name
     end
 
     ln -s $dot_path/$file_path $HOME/$dotfile_name
@@ -53,19 +57,9 @@ function dotfiles.file.unlink --argument-names file_path -d 'Unlink a dotfile'
     rm $HOME/$dotfile_name
 
     if test -e $__dotfiles_backup_path/$dotfile_name
-      dotfiles.file.restore $dotfile_name
+      mv $__dotfiles_backup_path/$dotfile_name $HOME/$dotfile_name
     end
   else
     omf.log red "$dot_path/$file_path does not exist!"
   end
-end
-
-function dotfiles.file.backup --argument-names file_name -d 'Creates a backup'
-  mv $HOME/$file_name $__dotfiles_backup_path/$file_name
-  omf.log green "Created a backup for $file_name to $__dotfiles_backup_path."
-end
-
-function dotfiles.file.restore --argument-names file_name -d 'Restores from backup'
-  mv $__dotfiles_backup_path/$file_name $HOME/$file_name
-  omf.log green "Restored $file_name to $HOME."
 end
