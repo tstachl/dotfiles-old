@@ -1,3 +1,4 @@
+# Show git status
 function get_git_status -d "Gets the current git status"
   if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
     set -l dirty (command git status -s --ignore-submodules=dirty | wc -l | sed -e 's/^ *//' -e 's/ *$//' 2> /dev/null)
@@ -20,9 +21,23 @@ function get_git_status -d "Gets the current git status"
 
     echo " $ref "
     set_color normal
-   end
+  end
+end
+
+# Show directory
+function show_pwd -d "Show the current directory"
+  set -l pwd (prompt_pwd)
+  set -l pad ""
+
+  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
+    set pad " "
+  end
+
+  prompt.segment normal blue "[$pwd]$pad"
 end
 
 function fish_right_prompt -d "Prints right prompt"
+
+  show_pwd
   get_git_status
 end
