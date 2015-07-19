@@ -1,11 +1,14 @@
 # Path to your dotfiles.
-set dot_path $HOME/.dotfiles
+set dot_path          (dirname (dirname (status --current-filename)))
 
 # Path to your oh-my-fish.
-set fish_path $HOME/.dotfiles/oh-my-fish
+set fish_path         $dot_path/oh-my-fish
 
 # Path to your custom folder (default path is ~/.oh-my-fish/custom)
-set fish_custom $HOME/.dotfiles/fish
+set fish_custom       $dot_path/fish
+
+# My default user
+set default_user      'tstachl'
 
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
