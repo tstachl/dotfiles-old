@@ -44,3 +44,6 @@ dotfiles link vim/vimrc
 
 # Aliases
 alias devcon "ssh devcon"
+alias tml "abduco"
+alias tma "abduco -a"
+alias tmc "abduco -c"
