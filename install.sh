@@ -42,6 +42,30 @@ if [ -d $dot_path ]; then
   exit 0
 fi
 
+log $blue "Installing dvtm ..."
+if [ "$(uname)" == "Darwin" ]; then
+  brew install dvtm &> /dev/null
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  sudo apt-get install dvtm &> /dev/null
+fi
+
+if [ $? -ne 0 ]; then
+  log $red "Something went wrong, couldn't install dvtm please instll manually."
+  log $yellow "I'm still continuing with the install though."
+fi
+
+log $blue "Installing abduco ..."
+if [ "$(uname)" == "Darwin" ]; then
+  brew install abduco &> /dev/null
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  sudo apt-get install abduco &> /dev/null
+fi
+
+if [ $? -ne 0 ]; then
+  log $red "Something went wrong, couldn't install abduco please instll manually."
+  log $yellow "I'm still continuing with the install though."
+fi
+
 log $blue "Cloning remotes ..."
 if command_exists git ; then
   git clone -b master "https://github.com/tstachl/dotfiles.git" $dot_path
