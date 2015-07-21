@@ -43,3 +43,6 @@ dotfiles link git/gitk
 dotfiles link git/tigrc
 
 dotfiles link vim/vimrc
+
+# Aliases
+alias devcon "ssh devcon"
