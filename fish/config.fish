@@ -1,4 +1,5 @@
 # Path to your dotfiles.
+
 if test -L (status --current-filename)
   set -x dot_path    (dirname (dirname (readlink (status --current-filename))))
 else
@@ -7,7 +8,6 @@ end
 
 # Set color profile
 set -x LC_TERM_PROFILE base16-monokai.dark
-eval sh $HOME/.config/base16-shell/$LC_TERM_PROFILE.sh
 
 # Path to your oh-my-fish.
 set fish_path         $dot_path/oh-my-fish
@@ -27,8 +27,11 @@ Theme 'thomasstachl'
 Plugin 'dotfiles'
 
 # Make sure we're up to date
-omf self-update
-dotfiles self-update
+if status --is-login
+  eval sh $HOME/.config/base16-shell/$LC_TERM_PROFILE.sh
+  omf self-update
+  dotfiles self-update
+end
 
 # Add all the dotfiles
 dotfiles link git/gitattributes
