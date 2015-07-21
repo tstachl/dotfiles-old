@@ -46,7 +46,6 @@ log $blue "Cloning remotes ..."
 if command_exists git ; then
   git clone -b master "https://github.com/tstachl/dotfiles.git" $dot_path
   git clone -b master "https://github.com/oh-my-fish/oh-my-fish.git" $fish_path
-  git clone -b master "https://github.com/dotphiles/dotvim.git" $dotvim_path
   git clone -b master "https://github.com/chriskempson/base16-shell.git" $base16_path
 else
   log $red "Git is not installed, can not continue."

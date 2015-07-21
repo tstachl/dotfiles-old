@@ -9,9 +9,6 @@ end
 set -x LC_TERM_PROFILE base16-monokai.dark
 eval sh $HOME/.config/base16-shell/$LC_TERM_PROFILE.sh
 
-# Path to dotvim
-set dotvim_path       ~/.vim
-
 # Path to your oh-my-fish.
 set fish_path         $dot_path/oh-my-fish
 
@@ -28,12 +25,10 @@ set default_user      'tstachl'
 # Plugins and themes can be found at https://github.com/oh-my-fish/
 Theme 'thomasstachl'
 Plugin 'dotfiles'
-Plugin 'dotvim'
 
 # Make sure we're up to date
 omf self-update
 dotfiles self-update
-dotvim self-update
 
 # Add all the dotfiles
 dotfiles link git/gitattributes
