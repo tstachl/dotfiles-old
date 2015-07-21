@@ -142,3 +142,4 @@ endif
 nnoremap <S-H>      :w<CR>:bprevious<CR>
 nnoremap <S-L>      :w<CR>:bnext<CR>
 nnoremap <S-K>      :w<CR>:bdel<CR>
+nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
