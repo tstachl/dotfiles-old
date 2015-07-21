@@ -37,7 +37,14 @@ map <F7> :setlocal spell! spell?<CR>
 " behavior
 " ignore these files when completing names and in explorer
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
-set shell=$SHELL        " use current shell for shell commands
+
+" Vim needs a POSIX-Compliant shell. Fish is not.
+if $SHELL =~ 'bin/fish'
+  set shell=/bin/sh     " use current shell for shell commands
+else
+  set shell=$SHELL
+endif
+
 set hidden              " enable multiple modified buffers
 set history=1000
 set autoread            " automatically read feil that has been changed on disk and doesn't have changes in vim
