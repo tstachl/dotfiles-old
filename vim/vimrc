@@ -1,0 +1,96 @@
+"
+" vimrc : my personal vimrc file
+"
+" Authors:
+"   Thomas Stachl <thomas@stachl.me>
+"
+
+set nocompatible
+filetype off
+
+set encoding=utf-8
+set binary
+
+" source view settings
+source $dot_path/vim/view.vim
+
+" source spell check
+source $dot_path/vim/spell.vim
+
+" source behavior
+source $dot_path/vim/behavior.vim
+
+" source search settings
+source $dot_path/vim/search.vim
+
+" source search settings
+source $dot_path/vim/directory.vim
+
+" source search settings
+source $dot_path/vim/folding.vim
+
+if has("user_commands")
+  let mapleader = ","
+  let maplocalleader = "\\"
+endif
+
+" Remember last position in file
+if has("autocmd")
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+endif
+
+" Install vundle if not already installed
+if has("user_commands")
+  " Setting up Vundle - the vim plugin bundler
+  let VundleInstalled=0
+  let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+  if !filereadable(vundle_readme)
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    let VundleInstalled=1
+  endif
+endif
+
+if has("user_commands")
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+
+  " Vundle itself
+  Bundle 'gmarik/vundle'
+  " Required for settings
+  Bundle 'chriskempson/base16-vim'
+
+  Bundle 'tpope/vim-bundler'
+  Bundle 'tpope/vim-endwise'
+  Bundle 'ervandew/supertab'
+  Bundle 'tpope/vim-fugitive'
+  Bundle 'ekalinin/Dockerfile.vim'
+  Bundle 'terryma/vim-multiple-cursors'
+  Bundle 'editorconfig/editorconfig-vim'
+  Bundle 'bling/vim-airline'
+endif
+
+" airline configuration
+source $dot_path/vim/airline.vim
+
+" colors
+let base16colorspace=256
+set background=dark
+colorscheme base16-solarized
+highlight clear SignColumn
+autocmd ColorScheme * highlight clear SignColumn
+
+if has("syntax")
+  syntax on
+  filetype plugin indent on
+end
+
+" Key mapping
+nnoremap <S-H>      :w<CR>:bprevious<CR>
+nnoremap <S-L>      :w<CR>:bnext<CR>
+nnoremap <S-K>      :w<CR>:bdel<CR>
