@@ -1,5 +1,4 @@
 # Path to your dotfiles.
-
 if test -L (status --current-filename)
   set -x dot_path    (dirname (dirname (readlink (status --current-filename))))
 else
@@ -43,7 +42,7 @@ dotfiles link git/tigrc
 dotfiles link vim/vimrc
 
 # Aliases
-alias devcon "ssh devcon"
+alias devcon "ssh -L 27018:localhost:27017 devcon"
 alias tml "abduco"
 alias tma "abduco -a"
 alias tmc "abduco -c"
