@@ -24,6 +24,7 @@ set default_user      'tstachl'
 # Plugins and themes can be found at https://github.com/oh-my-fish/
 Theme 'thomasstachl'
 Plugin 'dotfiles'
+Plugin 'rvm'
 
 # Make sure we're up to date
 if status --is-login
