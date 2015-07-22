@@ -35,18 +35,13 @@ command_exists() {
   type "$1" &> /dev/null ;
 }
 
-log $white "Installing dotfiles for Thomas ..."
-if [ -d $dot_path ]; then
-  log $yellow "You already have the dotfiles installed."
-  log $white "Remove ${dot_path} if you want to reinstall it."
-  exit 0
-fi
-
-log $blue "Installing dvtm ..."
-if [ "$(uname)" == "Darwin" ]; then
-  brew install dvtm &> /dev/null
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  sudo apt-get install dvtm &> /dev/null
+if ! command_exists dvtm ; then
+  log $blue "Installing dvtm ..."
+  if [ "$(uname)" == "Darwin" ]; then
+    brew install dvtm &> /dev/null
+  elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    sudo apt-get install dvtm &> /dev/null
+  fi
 fi
 
 if [ $? -ne 0 ]; then
@@ -54,16 +49,25 @@ if [ $? -ne 0 ]; then
   log $yellow "I'm still continuing with the install though."
 fi
 
-log $blue "Installing abduco ..."
-if [ "$(uname)" == "Darwin" ]; then
-  brew install abduco &> /dev/null
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  sudo apt-get install abduco &> /dev/null
+if ! command_exists abduco ; then
+  log $blue "Installing abduco ..."
+  if [ "$(uname)" == "Darwin" ]; then
+    brew install abduco &> /dev/null
+  elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    sudo apt-get install abduco &> /dev/null
+  fi
 fi
 
 if [ $? -ne 0 ]; then
   log $red "Something went wrong, couldn't install abduco please instll manually."
   log $yellow "I'm still continuing with the install though."
+fi
+
+log $white "Installing dotfiles for Thomas ..."
+if [ -d $dot_path ]; then
+  log $yellow "You already have the dotfiles installed."
+  log $white "Remove ${dot_path} if you want to reinstall it."
+  exit 0
 fi
 
 log $blue "Cloning remotes ..."
