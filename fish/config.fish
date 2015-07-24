@@ -41,9 +41,11 @@ dotfiles link git/gitk
 dotfiles link git/tigrc
 
 dotfiles link vim/vimrc
+dotfiles link tmux/tmux.conf
 
 # Aliases
 alias devcon "ssh -L 27018:localhost:27017 devcon"
-alias tml "abduco"
-alias tma "abduco -a"
-alias tmc "abduco -c"
+alias tml "tmux ls"
+alias tma "tmux a -t"
+alias tmc "tmux new -s"
+alias tmk "tmux kill-session -t"
